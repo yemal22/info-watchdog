@@ -6,6 +6,11 @@ Agent automatique de collecte et de veille d'actualités environnementales depui
 
 InfoWatchdog surveille automatiquement l'actualité environnementale en collectant des contenus récents depuis diverses sources et les stocke de manière structurée pour faciliter l'analyse et le suivi des tendances.
 
+## 📖 Documentation
+
+- **[Configuration Airtable](docs/airtable_setup.md)** - Guide complet pour configurer Airtable
+- **[Structure du projet](docs/structure.md)** - Architecture et organisation des fichiers
+
 ## 🌱 Sources de Données
 
 ### Reddit
@@ -58,24 +63,31 @@ pip install -r requirements.txt
 3. Notez le `client_id` et `client_secret`
 
 #### Airtable
-1. Créez une base Airtable
-2. Ajoutez une table nommée "Environmental_News" avec les champs :
-   - `Title` (Single line text)
-   - `URL` (URL)
-   - `Source` (Single line text)
-   - `Content` (Long text)
-   - `Author` (Single line text)
-   - `Published_Date` (Date)
-   - `Collected_Date` (Date)
-   - `Collector` (Single line text)
-   - `Hash` (Single line text)
-   - `Tags` (Single line text)
-   - `Reddit_Score` (Number)
-   - `Reddit_Comments` (Number)
-   - `Subreddit` (Single line text)
-   - `Feed_URL` (URL)
-3. Récupérez votre API key depuis [Account](https://airtable.com/account)
-4. Récupérez l'ID de votre base depuis l'URL
+⚠️ **Important** : Les champs Airtable doivent être créés manuellement avant utilisation.
+
+**Configuration rapide :**
+1. Créez une base Airtable avec une table "Environmental_News"
+2. Ajoutez les champs requis (voir [guide détaillé](docs/airtable_setup.md))
+3. Récupérez votre API key et Base ID
+
+**Champs obligatoires :**
+- `Title` (Single line text)
+- `URL` (URL) 
+- `Source` (Single line text)
+- `Content` (Long text)
+- `Author` (Single line text)
+- `Published_Date` (Date)
+- `Collected_Date` (Date)
+- `Collector` (Single line text)
+- `Hash` (Single line text)
+- `Tags` (Single line text)
+
+**Champs optionnels (Reddit) :**
+- `Reddit_Score` (Number)
+- `Reddit_Comments` (Number)
+- `Subreddit` (Single line text)
+
+➡️ **[Guide complet de configuration Airtable](docs/airtable_setup.md)**
 
 ### 4. Variables d'environnement
 ```bash
@@ -152,10 +164,10 @@ schedule:
 ### Avec cron (Linux/macOS)
 ```bash
 # Collecte toutes les heures
-0 * * * * cd /path/to/InfoWatchdog && python run.py
+0 * * * * cd /path/to/info-watchdog && python run.py
 
 # Logs
-0 * * * * cd /path/to/InfoWatchdog && python run.py >> logs/cron.log 2>&1
+0 * * * * cd /path/to/info-watchdog && python run.py >> logs/cron.log 2>&1
 ```
 
 ### Avec Task Scheduler (Windows)
@@ -167,7 +179,7 @@ schedule:
 ## 📋 Structure du Projet
 
 ```
-InfoWatchdog/
+info-watchdog/
 ├── src/
 │   ├── main.py              # Gestionnaire principal
 │   ├── collectors/          # Collecteurs de données

@@ -59,4 +59,3 @@ credentials.json
 .venv/
 
 test_*.py
-docs/
