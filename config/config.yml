@@ -1,24 +1,29 @@
 app:
-  name: "InfoWatchdog Environment"
+  name: "InfoWatchdog Environment Monitor"
   version: "1.0.0"
-  description: "A tool to monitor and manage information from various sources."
 
 collectors:
   reddit:
     enabled: true
-    subreddits: ["environment", "climate", "sustainability", "renewableenergy"]
-    limit: 50
+    subreddits: ["environment", "climate", "sustainability", "renewableenergy", "ClimateChange", "solar", "wind"]
+    limit: 25  
+    sort_type: "hot"
+    time_filter: "day"
 
   rss:
     enabled: true
+    timeout: 30
     feeds:
       - url: "https://cleantechnica.com/feed/"
         name: "CleanTechnica"
-      - url: "https://www.treehugger.com/feeds/all"
+      - url: "https://feeds.feedburner.com/treehugger/sfGA"
         name: "TreeHugger"
-  
+      - url: "https://www.renewableenergyworld.com/feeds/all/"
+        name: "Renewable Energy World"
+
 storage:
   type: "airtable"
+  enabled: true
 
 schedule:
   interval: 3600

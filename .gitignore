@@ -1,9 +1,62 @@
-.venv/
-docs/
-*.pyc
+# Variables d'environnement
+.env
+
+# Logs
+*.log
+logs/
+
+# Cache Python
 __pycache__/
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
 .vscode/
 .idea/
-.env
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Données locales
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Credentials
+credentials.json
+*.key
+*.pem
+
+# Virtual environment files
+.venv/
+
+test_*.py
+docs/

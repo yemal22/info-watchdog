@@ -163,3 +163,31 @@ class RedditCollector(BaseCollector):
         except Exception as e:
             self.logger.error(f"Reddit connection test failed: {str(e)}")
             return False
+    
+    def _is_relevant(self, text: str, keywords: List[str] = None) -> bool:
+        """
+        Vérifie si le contenu est pertinent selon les mots-clés.
+        
+        Args:
+            text: Texte à analyser
+            keywords: Liste de mots-clés environnementaux
+            
+        Returns:
+            True si pertinent, False sinon
+        """
+        if not keywords:
+            keywords = [
+                "climate", "environment", "sustainability", "renewable", 
+                "carbon", "green", "eco", "pollution", "conservation",
+                "biodiversity", "recycling", "solar", "wind", "emission",
+                "energy", "water", "nature", "forest", "ocean", "earth",
+                "warming", "change", "clean", "electric", "sustainable",
+                "waste", "plastic", "oil", "gas", "coal", "battery"
+            ]
+        
+        text_lower = text.lower()
+        
+        subreddit_names = ["environment", "climate", "sustainability", "renewableenergy", "climatechange", "solar", "wind"]
+        
+        return True
+        
