@@ -45,13 +45,14 @@ class AirtableStorage(BaseStorage):
             return True
         
         try:
-            # Filtre les nouveaux articles (désactivé temporairement)
-            # new_articles = self.filter_new_articles(articles)
-            new_articles = articles  # Temporaire - on stocke tout
+            # Filtre les nouveaux articles (réactivé)
+            new_articles = self.filter_new_articles(articles)
             
             if not new_articles:
                 self.logger.info("No new articles to store")
                 return True
+            
+            self.logger.info(f"Filtered {len(articles)} articles to {len(new_articles)} new articles")
             
             # Stocke article par article pour éviter les problèmes de batch
             success_count = 0
@@ -76,7 +77,7 @@ class AirtableStorage(BaseStorage):
     
     def _convert_to_airtable_format(self, article: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Convertit un article au format Airtable avec champs de base uniquement.
+        Convertit un article au format Airtable avec tous les champs nécessaires.
         
         Args:
             article: Article à convertir
@@ -84,10 +85,9 @@ class AirtableStorage(BaseStorage):
         Returns:
             Article formaté pour Airtable
         """
-        # Format minimal pour Airtable - champs de base uniquement
         airtable_record = {}
         
-        # Champs de base qui devraient toujours fonctionner
+        # Champs de base
         if article.get("title"):
             airtable_record["Title"] = str(article["title"])[:500]
         
@@ -106,7 +106,32 @@ class AirtableStorage(BaseStorage):
         if article.get("collector"):
             airtable_record["Collector"] = str(article["collector"])
         
-        # Métadonnées Reddit simples
+        # Hash pour éviter les doublons
+        if article.get("hash"):
+            airtable_record["Hash"] = str(article["hash"])
+        
+        # Tags
+        if article.get("tags"):
+            airtable_record["Tags"] = ", ".join(article["tags"])
+        
+        # Dates avec format adapté pour Airtable
+        if article.get("published_date"):
+            try:
+                formatted_date = self._format_date_for_airtable(article["published_date"])
+                if formatted_date:
+                    airtable_record["Published_Date"] = formatted_date
+            except Exception as e:
+                self.logger.warning(f"Failed to format published_date: {e}")
+        
+        if article.get("collected_date"):
+            try:
+                formatted_date = self._format_date_for_airtable(article["collected_date"])
+                if formatted_date:
+                    airtable_record["Collected_Date"] = formatted_date
+            except Exception as e:
+                self.logger.warning(f"Failed to format collected_date: {e}")
+        
+        # Métadonnées Reddit
         if article.get("collector") == "reddit":
             if article.get("reddit_score") is not None:
                 airtable_record["Reddit_Score"] = int(article["reddit_score"])
@@ -121,22 +146,27 @@ class AirtableStorage(BaseStorage):
     
     def _format_date_for_airtable(self, date_obj) -> str:
         """
-        Formate une date pour Airtable (format ISO simple).
+        Formate une date pour Airtable (format compatible).
         
         Args:
             date_obj: Objet datetime ou string
             
         Returns:
-            Date formatée pour Airtable
+            Date formatée pour Airtable (YYYY-MM-DD ou YYYY-MM-DDTHH:MM:SS.000Z)
         """
         if not date_obj:
             return ""
         
         if isinstance(date_obj, str):
-            return date_obj
+            try:
+                from dateutil import parser
+                parsed_date = parser.parse(date_obj)
+                return parsed_date.strftime("%Y-%m-%d")
+            except:
+                return date_obj
         
         if isinstance(date_obj, datetime):
-            return date_obj.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+            return date_obj.strftime("%Y-%m-%d")
         
         return ""
     

@@ -6,7 +6,7 @@ collectors:
   reddit:
     enabled: true
     subreddits: ["environment", "climate", "sustainability", "renewableenergy", "ClimateChange", "solar", "wind"]
-    limit: 25  
+    limit: 25
     sort_type: "hot"
     time_filter: "day"
 
@@ -16,10 +16,10 @@ collectors:
     feeds:
       - url: "https://cleantechnica.com/feed/"
         name: "CleanTechnica"
-      - url: "https://feeds.feedburner.com/treehugger/sfGA"
-        name: "TreeHugger"
       - url: "https://www.renewableenergyworld.com/feeds/all/"
         name: "Renewable Energy World"
+      - url: "https://insideclimatenews.org/feed/"
+        name: "Inside Climate News"
 
 storage:
   type: "airtable"
