@@ -41,8 +41,8 @@ Chaque article collecté contient :
 
 ### 1. Cloner le projet
 ```bash
-git clone https://github.com/yemal22/InfoWatchdog.git
-cd InfoWatchdog
+git clone https://github.com/yemal22/info-watchdog.git
+cd info-watchdog
 ```
 
 ### 2. Installer les dépendances
