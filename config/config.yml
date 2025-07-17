@@ -1,0 +1,24 @@
+app:
+  name: "InfoWatchdog Environment"
+  version: "1.0.0"
+  description: "A tool to monitor and manage information from various sources."
+
+collectors:
+  reddit:
+    enabled: true
+    subreddits: ["environment", "climate", "sustainability", "renewableenergy"]
+    limit: 50
+
+  rss:
+    enabled: true
+    feeds:
+      - url: "https://cleantechnica.com/feed/"
+        name: "CleanTechnica"
+      - url: "https://www.treehugger.com/feeds/all"
+        name: "TreeHugger"
+  
+storage:
+  type: "airtable"
+
+schedule:
+  interval: 3600
