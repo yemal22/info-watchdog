@@ -1,7 +1,40 @@
 # InfoWatchdog - Agent de Veille Environnementale
 
 <div align="center">
-  [![Status](https://img.shields.io/badge/status-active-green.svg)](https://github.com/yemal22/info-watchdog) [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/yemal22/info-watchdog/releases) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/) [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![Platform](https://img.shields.io/badge/platform-linux%20|%20macos%20|%20windows-lightgrey.svg)]() [![Reddit API](https://img.shields.io/badge/API-Reddit-FF4500.svg)](https://www.reddit.com/dev/api/) [![RSS Feeds](https://img.shields.io/badge/Feeds-RSS-FFA500.svg)]() [![Airtable](https://img.shields.io/badge/Database-Airtable-18BFFF.svg)](https://airtable.com/) [![Automation](https://img.shields.io/badge/automation-cron%20|%20systemd%20|%20windows-green.svg)]() [![Environmental](https://img.shields.io/badge/focus-environmental%20news-32CD32.svg)]() [![Auto Collection](https://img.shields.io/badge/collection-automated-brightgreen.svg)]() [![Duplicate Guard](https://img.shields.io/badge/duplicates-protected-orange.svg)]() [![24/7 Monitoring](https://img.shields.io/badge/monitoring-24%2F7-red.svg)]() [![Multi Source](https://img.shields.io/badge/sources-reddit%20%2B%20rss-blue.svg)]() [![Streamlit Dashboard](https://img.shields.io/badge/dashboard-streamlit-FF4B4B.svg)](https://streamlit.io/)
+  <p>
+  <a href="https://github.com/yemal22/info-watchdog">
+    <img src="https://img.shields.io/badge/status-active-green.svg" alt="Status">
+  </a>
+  <a href="https://github.com/yemal22/info-watchdog/releases">
+    <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version">
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+  </a>
+  <a href="https://www.python.org/downloads/">
+    <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python 3.8+">
+  </a>
+  <a href="https://github.com/psf/black">
+    <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style">
+  </a>
+  <img src="https://img.shields.io/badge/platform-linux%20|%20macos%20|%20windows-lightgrey.svg" alt="Platform">
+  <a href="https://www.reddit.com/dev/api/">
+    <img src="https://img.shields.io/badge/API-Reddit-FF4500.svg" alt="Reddit API">
+  </a>
+  <img src="https://img.shields.io/badge/Feeds-RSS-FFA500.svg" alt="RSS Feeds">
+  <a href="https://airtable.com/">
+    <img src="https://img.shields.io/badge/Database-Airtable-18BFFF.svg" alt="Airtable">
+  </a>
+  <img src="https://img.shields.io/badge/automation-cron%20|%20systemd%20|%20windows-green.svg" alt="Automation">
+  <img src="https://img.shields.io/badge/focus-environmental%20news-32CD32.svg" alt="Environmental Focus">
+  <img src="https://img.shields.io/badge/collection-automated-brightgreen.svg" alt="Automated Collection">
+  <img src="https://img.shields.io/badge/duplicates-protected-orange.svg" alt="Duplicate Guard">
+  <img src="https://img.shields.io/badge/monitoring-24%2F7-red.svg" alt="24/7 Monitoring">
+  <img src="https://img.shields.io/badge/sources-reddit%20%2B%20rss-blue.svg" alt="Multi Source">
+  <a href="https://streamlit.io/">
+    <img src="https://img.shields.io/badge/dashboard-streamlit-FF4B4B.svg" alt="Streamlit Dashboard">
+  </a>
+</p>
   
   <br><br>
   <img src="assets/logo-static.svg" alt="InfoWatchdog Logo" width="400"/>
@@ -308,25 +341,89 @@ python check_scheduler.py
 ## 📋 Structure du Projet
 
 ```
-info-watchdog/
-├── src/
-│   ├── main.py              # Gestionnaire principal
-│   ├── collectors/          # Collecteurs de données
-│   │   ├── base_collector.py
-│   │   ├── reddit_collector.py
-│   │   └── rss_collector.py
-│   ├── storage/             # Systèmes de stockage
-│   │   ├── base_storage.py
-│   │   └── airtable_storage.py
-│   └── utils/               # Utilitaires
-├── config/
-│   ├── config.yml           # Configuration principale
-│   └── keywords.json        # Mots-clés environnementaux
-├── requirements.txt         # Dépendances Python
-├── run.py                   # Script de lancement
-├── .env.example            # Template variables d'environnement
-└── README.md               # Documentation
+InfoWatchdog/
+├── 📄 run.py                      # Script de lancement principal
+├── 📄 run_dashboard.py            # Lanceur du dashboard Streamlit
+├── 📊 dashboard_streamlit.py      # Dashboard interactif Streamlit
+├── 📄 setup_scheduler.py          # Configuration automatique des tâches
+├── 📄 check_scheduler.py          # Vérification et gestion des tâches
+├── 🧪 test_airtable.py           # Tests de connexion Airtable
+├── 📄 requirements.txt            # Dépendances Python
+├── 📄 LICENSE                     # Licence MIT
+├── 📄 README.md                   # Documentation principale
+├── 📄 .env.example               # Template variables d'environnement
+├── 📄 infowatchdog.log           # Logs principaux
+│
+├── 📁 src/                       # Code source principal
+│   ├── 📄 __init__.py
+│   ├── 📄 main.py                # Gestionnaire principal
+│   │
+│   ├── 📁 collectors/            # Collecteurs de données
+│   │   ├── 📄 __init__.py
+│   │   ├── 📄 base_collector.py  # Classe abstraite collecteur
+│   │   ├── 📄 reddit_collector.py # Collecteur Reddit
+│   │   └── 📄 rss_collector.py   # Collecteur RSS
+│   │
+│   ├── 📁 processors/            # Traitement des données
+│   │   └── 📄 __init__.py
+│   │
+│   ├── 📁 storage/               # Systèmes de stockage
+│   │   ├── 📄 __init__.py
+│   │   ├── 📄 base_storage.py    # Interface abstraite stockage
+│   │   └── 📄 airtable_storage.py # Stockage Airtable
+│   │
+│   └── 📁 utils/                 # Utilitaires
+│       ├── 📄 __init__.py
+│       └── 📄 logo.py            # Générateur de logos ASCII
+│
+├── 📁 config/                    # Configuration
+│   ├── 📄 config.yml             # Configuration principale
+│   └── 📄 keywords.json          # Mots-clés environnementaux
+│
+├── 📁 docs/                      # Documentation
+│   ├── 📄 airtable_setup.md      # Guide configuration Airtable
+│   ├── 📄 sources.md             # Documentation Reddit & RSS
+│   └── 📄 structure.md           # Architecture du projet
+│
+├── 📁 assets/                    # Ressources
+│   ├── 🖼️ logo.svg              # Logo animé InfoWatchdog
+│   └── 🖼️ logo-static.svg       # Logo statique
+│
+└── 📁 logs/                      # Journaux d'exécution
+    └── 📄 cron.log               # Logs des tâches planifiées
 ```
+
+### 🏗️ Architecture modulaire
+
+#### 🔧 **Scripts principaux**
+- `run.py` : Point d'entrée principal pour collecte
+- `run_dashboard.py` : Lancement automatique du dashboard
+- `dashboard_streamlit.py` : Interface web interactive
+- `setup_scheduler.py` : Configuration automatique des tâches
+- `check_scheduler.py` : Monitoring et gestion
+
+#### 📊 **Code source (`src/`)**
+- **Collecteurs** : Modules spécialisés par source (Reddit, RSS)
+- **Stockage** : Interface abstraite extensible (Airtable, futur Google Sheets)
+- **Processors** : Traitement et transformation des données
+- **Utils** : Outils transversaux (logos, helpers)
+
+#### ⚙️ **Configuration (`config/`)**
+- `config.yml` : Paramètres principaux (subreddits, flux RSS, intervalles)
+- `keywords.json` : Dictionnaire de mots-clés environnementaux
+
+#### 📚 **Documentation (`docs/`)**
+- `airtable_setup.md` : Guide détaillé de configuration Airtable
+- `sources.md` : Explications Reddit & RSS, justifications techniques
+- `structure.md` : Architecture détaillée du système
+
+#### 🎨 **Assets (`assets/`)**
+- Logos SVG pour interface et documentation
+- Ressources graphiques du projet
+
+#### 📝 **Logs (`logs/`)**
+- `cron.log` : Logs des exécutions automatiques
+- `infowatchdog.log` : Logs détaillés de l'application
 
 ## 🎛 Choix Techniques
 
