@@ -347,7 +347,6 @@ InfoWatchdog/
 ├── 📊 dashboard_streamlit.py      # Dashboard interactif Streamlit
 ├── 📄 setup_scheduler.py          # Configuration automatique des tâches
 ├── 📄 check_scheduler.py          # Vérification et gestion des tâches
-├── 🧪 test_airtable.py           # Tests de connexion Airtable
 ├── 📄 requirements.txt            # Dépendances Python
 ├── 📄 LICENSE                     # Licence MIT
 ├── 📄 README.md                   # Documentation principale
@@ -504,3 +503,82 @@ MIT License - Voir le fichier LICENSE pour plus de détails.
 3. Committez vos changements (`git commit -m 'Add amazing feature'`)
 4. Push sur la branche (`git push origin feature/amazing-feature`)
 5. Ouvrez une Pull Request
+
+---
+
+## 📞 Support et Contact
+
+### 📧 Contact Direct
+- **Email** : [yemalem03@gmail.com](mailto:yemalem03@gmail.com)
+- **Réponse** : Sous 48h en moyenne
+
+---
+
+## 🏆 Reconnaissance et Crédits
+
+### 👥 Contributeurs
+- **Développeur principal** : [@yemal22](https://github.com/yemal22)
+- **Mainteneur** : [@yemal22](https://github.com/yemal22)
+
+### 🙏 Remerciements
+- **Reddit API** : Pour l'accès aux données de communautés
+- **Airtable** : Pour la plateforme de base de données
+- **Streamlit** : Pour le framework de dashboard
+- **Python Community** : Pour l'écosystème et les bibliothèques
+
+### 📚 Bibliothèques utilisées
+- `praw` : Interface Reddit API
+- `feedparser` : Parsing RSS/Atom feeds
+- `airtable-python-wrapper` : Client Airtable
+- `streamlit` : Framework dashboard web
+- `plotly` : Graphiques interactifs
+- `pyyaml` : Configuration YAML
+- `python-dotenv` : Gestion variables d'environnement
+
+---
+
+## 🔐 Sécurité et Confidentialité
+
+### 🛡️ Bonnes Pratiques
+- **Variables d'environnement** : Stockage sécurisé des clés API
+- **Logs** : Aucune donnée sensible dans les logs
+- **Données** : Stockage chez l'utilisateur (Airtable)
+- **API** : Respecte les limites de taux des services
+
+### 🔒 Politique de Confidentialité
+- **Aucune collecte** : InfoWatchdog ne collecte aucune donnée personnelle
+- **Local first** : Toutes les données restent sous votre contrôle
+- **Open source** : Code entièrement auditable
+
+---
+
+## 📄 Informations Légales
+
+### 📋 Licence
+Ce projet est sous licence **MIT License**.
+
+### 🏢 Marques et Copyright
+- **InfoWatchdog** © 2025 - [@yemal22](https://github.com/yemal22)
+- **Reddit** est une marque déposée de Reddit Inc.
+- **Airtable** est une marque déposée d'Airtable Inc.
+- **Streamlit** est une marque déposée de Streamlit Inc.
+
+---
+
+<div align="center">
+
+## 🐕‍🦺 InfoWatchdog
+
+**Veille environnementale automatisée - 2025**
+
+[![Made with ❤️](https://img.shields.io/badge/Made%20with-❤️-red.svg)](https://github.com/yemal22/info-watchdog)
+[![Powered by Python](https://img.shields.io/badge/Powered%20by-Python-blue.svg)](https://www.python.org/)
+[![Open Source](https://img.shields.io/badge/Open%20Source-❤️-green.svg)](https://opensource.org/)
+
+**[Documentation](docs/) • [Releases](https://github.com/yemal22/info-watchdog/releases) • [Issues](https://github.com/yemal22/info-watchdog/issues) • [Discussions](https://github.com/yemal22/info-watchdog/discussions)**
+
+---
+
+*Développé avec passion pour la protection de l'environnement* 🌱
+
+</div>
