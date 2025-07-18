@@ -12,9 +12,16 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
 from src.main import InfoWatchdog
+from src.utils.logo import (
+    display_watchdog_logo, display_status_banner, display_working_banner,
+    display_collection_report, display_alert_banner
+)
 
 def main():
     """Fonction principale."""
+    # Affiche le logo watchdog au démarrage
+    print(display_watchdog_logo())
+    
     parser = argparse.ArgumentParser(description="InfoWatchdog - Agent de veille environnementale")
     parser.add_argument(
         "--test-only", 
@@ -31,16 +38,29 @@ def main():
         action="store_true", 
         help="Affiche les statistiques du système"
     )
+    parser.add_argument(
+        "--no-logo", 
+        action="store_true", 
+        help="Désactive l'affichage du logo"
+    )
+    parser.add_argument(
+        "--alert-mode", 
+        action="store_true", 
+        help="Active les alertes visuelles"
+    )
     
     args = parser.parse_args()
     
     try:
         # Initialise InfoWatchdog
-        watchdog = InfoWatchdog(config_path=args.config)
+        config_file = args.config if args.config else "config/config.yml"
+        watchdog = InfoWatchdog(config_file)
         
         if args.test_only:
             # Test des connexions uniquement
-            print("Testing connections...")
+            print("\n🧪 Testing connections...")
+            if not args.no_logo:
+                print(display_working_banner())
             results = watchdog.test_connections()
             
             print("\nConnection Test Results:")
@@ -56,7 +76,7 @@ def main():
         
         elif args.stats:
             # Affiche les statistiques
-            print("System Statistics:")
+            print("\n📊 InfoWatchdog Statistics...")
             stats = watchdog.get_stats()
             
             print(f"\nCollectors:")
@@ -77,24 +97,45 @@ def main():
         
         else:
             # Exécute un cycle de collecte complet
-            print("Starting InfoWatchdog collection cycle...")
+            print("\n🐕‍🦺 Starting InfoWatchdog patrol mission...")
             
-            report = watchdog.run_collection_cycle()
+            # Affiche la bannière de travail
+            if not args.no_logo:
+                print(display_working_banner())
             
-            print(f"\nCollection Report:")
-            print(f"  Duration: {report['duration_seconds']:.2f} seconds")
-            print(f"  Articles collected: {report['articles_collected']}")
-            print(f"  Storage success: {'✅' if report['storage_success'] else '❌'}")
+            # Lance la collecte
+            success = watchdog.run_collection_cycle()
             
-            return 0 if report['storage_success'] else 1
+            # Récupère les métriques
+            duration = getattr(watchdog, '_last_cycle_duration', 0)
+            total_articles = getattr(watchdog, '_last_articles_collected', 0)
             
+            # Affiche le rapport avec chien gardien
+            if not args.no_logo:
+                print(display_collection_report(total_articles, duration, success))
+            else:
+                storage_success = "✅" if success else "❌"
+                print(f"\nCollection Report:")
+                print(f"  Duration: {duration:.2f} seconds")
+                print(f"  Articles collected: {total_articles}")
+                print(f"  Storage success: {storage_success}")
+            
+            # Alerte si articles trouvés et mode alerte activé
+            if args.alert_mode and total_articles > 0:
+                print(display_alert_banner())
+            
+            if success:
+                print("\n🎉 Woof! Mission accomplished successfully!")
+            else:
+                print("\n⚠️  Woof woof... Mission completed with some issues.")
+                
     except KeyboardInterrupt:
-        print("\n⚠️  Operation cancelled by user")
-        return 1
+        print("\n\n⚠️  Patrol interrupted by human! 🐕")
+        print("    *sad puppy eyes* - InfoWatchdog going to sleep...")
     except Exception as e:
-        print(f"❌ Error: {e}")
-        return 1
+        print(f"\n❌ Critical error detected! Watchdog needs help: {str(e)}")
+        print("    *whimper* - Please check the logs...")
+        sys.exit(1)
 
 if __name__ == "__main__":
-    exit_code = main()
-    sys.exit(exit_code)
+    main()

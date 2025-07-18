@@ -1,6 +1,16 @@
 # InfoWatchdog - Agent de Veille Environnementale
 
-Agent automatique de collecte et de veille d'actualités environnementales depuis multiple sources (Reddit, RSS) avec stockage structuré dans Airtable.
+<div align="center">
+  <img src="assets/logo-static.svg" alt="InfoWatchdog Logo" width="400"/>
+  
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+  [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+  [![Status](https://img.shields.io/badge/status-active-green.svg)]()
+</div>
+
+**InfoWatchdog** est un agent automatique de collecte et de veille d'actualités environnementales depuis multiples sources (Reddit, RSS) avec stockage structuré dans Airtable.
+
+---
 
 ## 🎯 Objectif
 
@@ -159,22 +169,85 @@ schedule:
   interval: 3600  # Collecte toutes les heures
 ```
 
-## 🔄 Automatisation
+## 🕐 Automatisation et Planification
 
-### Avec cron (Linux/macOS)
+InfoWatchdog inclut des scripts pour configurer automatiquement la collecte périodique selon votre système d'exploitation.
+
+### Script de configuration automatique
+
 ```bash
-# Collecte toutes les heures
-0 * * * * cd /path/to/info-watchdog && python run.py
-
-# Logs
-0 * * * * cd /path/to/info-watchdog && python run.py >> logs/cron.log 2>&1
+python setup_scheduler.py
 ```
 
-### Avec Task Scheduler (Windows)
-1. Ouvrez le Planificateur de tâches
-2. Créez une tâche de base
-3. Déclencheur : Quotidien/Horaire
-4. Action : `python.exe /path/to/InfoWatchdog/run.py`
+**Fonctionnalités :**
+- ✅ Détection automatique du système d'exploitation
+- ✅ Configuration de tâches cron (Linux/macOS)
+- ✅ Configuration de services systemd (Linux)
+- ✅ Configuration du Planificateur de tâches (Windows)
+- ✅ Détection automatique de l'environnement virtuel Python
+- ✅ Génération automatique des chemins et logs
+
+### Vérification et gestion
+
+```bash
+python check_scheduler.py
+```
+
+**Fonctionnalités :**
+- 🔍 Vérification des tâches planifiées existantes
+- 📄 Consultation des logs d'exécution
+- 🧪 Test d'exécution manuelle
+- 🗑️ Suppression des tâches planifiées
+
+### Intervalles de collecte disponibles
+
+- **Hourly** : Toutes les heures (recommandé)
+- **Daily** : Une fois par jour (8h du matin)
+- **Twice daily** : Deux fois par jour (8h et 20h)
+- **Every 6h** : Toutes les 6 heures
+
+### Configuration manuelle alternative
+
+#### Linux/macOS (cron)
+```bash
+# Édite le crontab
+crontab -e
+
+# Ajoute cette ligne pour une collecte horaire
+0 * * * * cd /path/to/InfoWatchdog && python run.py >> logs/cron.log 2>&1
+```
+
+#### Linux (systemd)
+Créez les fichiers de service avec `setup_scheduler.py` ou manuellement :
+
+```bash
+sudo systemctl enable infowatchdog.timer
+sudo systemctl start infowatchdog.timer
+```
+
+#### Windows (PowerShell)
+Le script génère automatiquement un fichier `setup_windows_task.ps1` :
+
+```powershell
+# Exécuter en tant qu'Administrateur
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+.\setup_windows_task.ps1
+```
+
+### Logs et monitoring
+
+Les logs d'exécution automatique sont sauvegardés dans :
+- `logs/cron.log` - Logs des exécutions planifiées
+- `logs/wrapper.log` - Logs du script wrapper
+- `logs/infowatchdog.log` - Logs détaillés de l'application
+
+```bash
+# Voir les logs récents
+tail -f logs/cron.log
+
+# Vérifier le statut
+python check_scheduler.py
+```
 
 ## 📋 Structure du Projet
 
