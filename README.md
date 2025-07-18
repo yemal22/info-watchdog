@@ -1,11 +1,30 @@
 # InfoWatchdog - Agent de Veille Environnementale
 
 <div align="center">
-  <img src="assets/logo-static.svg" alt="InfoWatchdog Logo" width="400"/>
-  
+  <!-- Badges row 1 - Status and Version -->
+  [![Status](https://img.shields.io/badge/status-active-green.svg)](https://github.com/yemal22/info-watchdog)
+  [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/yemal22/info-watchdog/releases)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-  [![Status](https://img.shields.io/badge/status-active-green.svg)]()
+  [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+  
+  <!-- Badges row 2 - Platform and Tech Stack -->
+  [![Platform](https://img.shields.io/badge/platform-linux%20|%20macos%20|%20windows-lightgrey.svg)]()
+  [![Reddit API](https://img.shields.io/badge/API-Reddit-FF4500.svg)](https://www.reddit.com/dev/api/)
+  [![RSS Feeds](https://img.shields.io/badge/Feeds-RSS-FFA500.svg)]()
+  [![Airtable](https://img.shields.io/badge/Database-Airtable-18BFFF.svg)](https://airtable.com/)
+  [![Automation](https://img.shields.io/badge/automation-cron%20|%20systemd%20|%20windows-green.svg)]()
+  
+  <!-- Badges row 3 - Features and Monitoring -->
+  [![Environmental](https://img.shields.io/badge/focus-environmental%20news-32CD32.svg)]()
+  [![Auto Collection](https://img.shields.io/badge/collection-automated-brightgreen.svg)]()
+  [![Duplicate Guard](https://img.shields.io/badge/duplicates-protected-orange.svg)]()
+  [![24/7 Monitoring](https://img.shields.io/badge/monitoring-24%2F7-red.svg)]()
+  [![Multi Source](https://img.shields.io/badge/sources-reddit%20%2B%20rss-blue.svg)]()
+  
+  <!-- Logo -->
+  <br><br>
+  <img src="assets/logo-static.svg" alt="InfoWatchdog Logo" width="400"/>
 </div>
 
 **InfoWatchdog** est un agent automatique de collecte et de veille d'actualités environnementales depuis multiples sources (Reddit, RSS) avec stockage structuré dans Airtable.
