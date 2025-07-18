@@ -1,38 +1,8 @@
 # InfoWatchdog - Agent de Veille Environnementale
 
 <div align="center">
-  <p>
-  <a href="https://github.com/yemal22/info-watchdog">
-    <img src="https://img.shields.io/badge/status-active-green.svg" alt="Status">
-  </a>
-  <a href="https://github.com/yemal22/info-watchdog/releases">
-    <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version">
-  </a>
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
-  </a>
-  <a href="https://www.python.org/downloads/">
-    <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python 3.8+">
-  </a>
-  <a href="https://github.com/psf/black">
-    <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style">
-  </a>
-  <img src="https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows-lightgrey.svg" alt="Platform">
-  <a href="https://www.reddit.com/dev/api/">
-    <img src="https://img.shields.io/badge/API-Reddit-FF4500.svg" alt="Reddit API">
-  </a>
-  <img src="https://img.shields.io/badge/Feeds-RSS-FFA500.svg" alt="RSS Feeds">
-  <a href="https://airtable.com/">
-    <img src="https://img.shields.io/badge/Database-Airtable-18BFFF.svg" alt="Airtable">
-  </a>
-  <img src="https://img.shields.io/badge/automation-cron%20%7C%20systemd%20%7C%20windows-green.svg" alt="Automation">
-  <img src="https://img.shields.io/badge/focus-environmental%20news-32CD32.svg" alt="Environmental">
-  <img src="https://img.shields.io/badge/collection-automated-brightgreen.svg" alt="Auto Collection">
-  <img src="https://img.shields.io/badge/duplicates-protected-orange.svg" alt="Duplicate Guard">
-  <img src="https://img.shields.io/badge/monitoring-24%2F7-red.svg" alt="24/7 Monitoring">
-  <img src="https://img.shields.io/badge/sources-reddit%20%2B%20rss-blue.svg" alt="Multi Source">
-</p>
-
+  [![Status](https://img.shields.io/badge/status-active-green.svg)](https://github.com/yemal22/info-watchdog) [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/yemal22/info-watchdog/releases) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/) [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![Platform](https://img.shields.io/badge/platform-linux%20|%20macos%20|%20windows-lightgrey.svg)]() [![Reddit API](https://img.shields.io/badge/API-Reddit-FF4500.svg)](https://www.reddit.com/dev/api/) [![RSS Feeds](https://img.shields.io/badge/Feeds-RSS-FFA500.svg)]() [![Airtable](https://img.shields.io/badge/Database-Airtable-18BFFF.svg)](https://airtable.com/) [![Automation](https://img.shields.io/badge/automation-cron%20|%20systemd%20|%20windows-green.svg)]() [![Environmental](https://img.shields.io/badge/focus-environmental%20news-32CD32.svg)]() [![Auto Collection](https://img.shields.io/badge/collection-automated-brightgreen.svg)]() [![Duplicate Guard](https://img.shields.io/badge/duplicates-protected-orange.svg)]() [![24/7 Monitoring](https://img.shields.io/badge/monitoring-24%2F7-red.svg)]() [![Multi Source](https://img.shields.io/badge/sources-reddit%20%2B%20rss-blue.svg)]() [![Streamlit Dashboard](https://img.shields.io/badge/dashboard-streamlit-FF4B4B.svg)](https://streamlit.io/)
+  
   <br><br>
   <img src="assets/logo-static.svg" alt="InfoWatchdog Logo" width="400"/>
 </div>
@@ -44,6 +14,63 @@
 ## 🎯 Objectif
 
 InfoWatchdog surveille automatiquement l'actualité environnementale en collectant des contenus récents depuis diverses sources et les stocke de manière structurée pour faciliter l'analyse et le suivi des tendances.
+
+## 📊 Dashboard Temps Réel
+
+InfoWatchdog inclut un **dashboard Streamlit interactif** pour surveiller vos données en temps réel !
+
+### 🚀 Lancement rapide du dashboard
+```bash
+# Méthode simple
+python run_dashboard.py
+
+# Ou directement avec Streamlit
+streamlit run dashboard_streamlit.py
+```
+
+### 🎨 Fonctionnalités du dashboard
+
+#### 📈 Visualisations en temps réel
+- **Métriques principales** : Articles collectés, répartition par source, activité récente
+- **Graphiques temporels** : Evolution quotidienne des collectes
+- **Graphiques en secteurs** : Répartition par sources RSS et subreddits Reddit
+- **Heatmap d'activité** : Patterns de collecte par heure et jour de la semaine
+
+#### 🔍 Analyse des données
+- **Articles récents** : Liste des dernières collectes avec scores Reddit
+- **Sources tendances** : Top sources sur 7 jours
+- **Top subreddits** : Subreddits les plus actifs
+- **Statistiques détaillées** : Performance par collecteur, scores moyens
+
+#### ⚙️ Contrôles interactifs
+- **Filtrage par période** : 7j, 30j, 90j ou toutes les données
+- **Actualisation automatique** : Mise à jour toutes les 30 secondes
+- **Cache intelligent** : Données mises en cache 5 minutes pour de meilleures performances
+- **Interface responsive** : Compatible mobile et desktop
+
+#### 🎯 Accès direct
+- **URL locale** : http://localhost:8501
+- **Thème InfoWatchdog** : Design cohérent avec logos ASCII
+- **Sidebar de contrôle** : Paramètres et informations de statut
+
+### 📦 Installation dashboard
+```bash
+# Installation des dépendances
+pip install streamlit plotly pandas numpy
+
+# Ou mise à jour complète
+pip install -r requirements.txt
+```
+
+### 🖥️ Captures d'écran
+Le dashboard affiche :
+- 🐕‍🦺 **En-tête stylisé** avec logo ASCII InfoWatchdog
+- 📊 **Métriques temps réel** : Total articles, Reddit vs RSS, sources actives
+- 📈 **Graphiques interactifs** : Plotly pour visualisations dynamiques
+- 📰 **Feed articles récents** : Liens directs, scores Reddit, métadonnées
+- 🔥 **Analyse tendances** : Sources populaires, subreddits actifs
+
+---
 
 ## 📖 Documentation
 
